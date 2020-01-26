@@ -29,11 +29,12 @@
 var numPrincipal = '';
 //Perminte enviar pujas de numeros ingresados
 var numPuja = '';
-var numIntentos = [];
-var conteneNum = [];
+var numeroAdd = '';
+var intentoNum = '';
 var picas = 0;
 var fijas = 0;
-
+// variable que se usa para condicionar el fin del juego en caso de ser adivinado el dijito
+var ganaJugador = false;
 
 function limitar(e, contenido, caracteres)
 {
@@ -56,99 +57,78 @@ function limitar(e, contenido, caracteres)
     return true;
 }
 
-
-
-// variable que se usa para condicionar el fin del juego en caso de ser adivinado el dijito
-var ganaJugador = false;
-
 //Pinta el número oculto
 function numAdv(){
     numPrincipal = parseInt(document.getElementById('campoNumAdv').value);
     document.getElementById('NumOculto').innerHTML = numPrincipal;
+
     if(document.getElementById('campoNumAdv').onclick = true){
         document.getElementById('campoNumAdv').value  = '';
-        document.getElementById('guardar').disabled  = true;
+        document.getElementById('guardar').disabled  == true;
         document.getElementById('campoNumAdv').disabled  = true;
     }
-    
-    var numeroAdd = new Array(numPrincipal);
-    console.log(numeroAdd.length);
-    console.log(numPrincipal.split());
+    numeroAdd = numPrincipal.toString();
+    console.log(numeroAdd);
 }
 
 function pujar(numPuja){
     numPuja = parseInt(document.getElementById('campoNum').value);
-        if(document.getElementById('campoNum').onclick = true){
+    if(document.getElementById('campoNum').onclick = true){
         
-        var intentoNum = new Array(numPuja);
+        if(numeroAdd != '' || numeroAdd != NaN || numeroAdd != null){
+            intentoNum = numPuja.toString();
 
-        console.log(intentoNum);
-
-        for(var i=0; i<=1; i++){
             //Determina si hay fijas
-        if(numPrincipal[0] == intentoNum[0])
-            fijas++;
-        if(numPrincipal[1] == intentoNum[1])
-            fijas++;
-        if(numPrincipal[2] == intentoNum[2])
-            fijas++;
-        if(numPrincipal[3] == intentoNum[3])
-            fijas++;
-    
+            if(numeroAdd[0] == intentoNum[0])
+                fijas++;
+            if(numeroAdd[1] == intentoNum[1])
+                fijas++;
+            if(numeroAdd[2] == intentoNum[2])
+                fijas++;
+            if(numeroAdd[3] == intentoNum[3])
+                fijas++;
+
+            //Determinar si hay picas
+            if(numeroAdd[0] == intentoNum[1] || numeroAdd[0] == intentoNum[2] || numeroAdd[0] == intentoNum[3])
+            picas++;
+            if(numeroAdd[1] == intentoNum[0] || numeroAdd[1] == intentoNum[2] || numeroAdd[1] == intentoNum[3])
+            picas++;
+            if(numeroAdd[2] == intentoNum[0] || numeroAdd[2] == intentoNum[1] || numeroAdd[2] == intentoNum[3])
+            picas++;
+            if(numeroAdd[3] == intentoNum[0] || numeroAdd[3] == intentoNum[1] || numeroAdd[3] == intentoNum[2])
+            picas++;
+
+
+            //Imprime en la tabla 
+            if(document.getElementById('indiceIntento').innerHTML)
+                document.getElementById('indiceIntento').innerHTML = parseInt(document.getElementById('indiceIntento').innerHTML)  + 1;
+            else
+                document.getElementById('indiceIntento').innerHTML = 1;
+
+            if(numeroAdd != '' && intentoNum  == numeroAdd){
+                ganaJugador = true;
+                alert('En hora buena has ganado');
+                document.getElementById('puja').disabled  = true;
+            }else if(parseInt(document.getElementById('indiceIntento').innerHTML) == 10){
+                document.getElementById('puja').disabled  = true;
+                alert('has fallado, agotaste todos tus intentos');
+            }
+
+            document.getElementById('numeroIngr').innerHTML = numPuja;
+            document.getElementById('valorAprox').innerHTML = ('tienes: '+fijas+' fijas y: '+picas+' picas');
+
+        }else {
+            alert('no existe un numero para adivinar');
+            alert('ingrese un numero a adivinar adivinar');
+            document.getElementById('campoNum').value = '';
         }
-        
-        console.log(intentoNum[0])
+
+        console.log(fijas);
+        console.log(picas);
     }
-
-    //Imprime en la tabla 
-    if(document.getElementById('indiceIntento').innerHTML)
-        document.getElementById('indiceIntento').innerHTML = parseInt(document.getElementById('indiceIntento').innerHTML)  + 1;
-    else
-        document.getElementById('indiceIntento').innerHTML = 1;
-
-    if(parseInt(document.getElementById('indiceIntento').innerHTML) == 10){
-        document.getElementById('puja').disabled  = true;
-        alert('has agotado todos tus intentos');
-    }
-    document.getElementById('numeroIngr').innerHTML = numPuja;
-
-    
-
-    // if(fijas == numPrincipal){
-    //     if(numPrincipal == numPuja){
-    //         document.getElementById('valorAprox').innerHTML = fijas;
-    //         console.log("estoy entrando aqui");
-    //         ganaJugador= true;
-    //         parseInt(document.getElementById('indiceIntento').innerHTML) == 10;    
-    //     }
-        
-    // }
-    //     console.log(numPuja)
 }
 
-// function(){
 
-//     //Determina si hay fijas
-//     if(numPrincipal[0] == numPuja[0])
-//         fijas++;
-//     if(numPrincipal[1] == numPuja[1])
-//         fijas++;
-//     if(numPrincipal[2] == numPuja[2])
-//         fijas++;
-//     if(numPrincipal[3] == numPuja[3])
-//         fijas++;
-
-//     //Determina si hay picas
-//     if(numPrincipal[0] == numPuja[1] || numPrincipal[0] == numPuja[2] || numPrincipal[0] == numPuja[3])
-//         picas++;
-//     if(numPrincipal[1] == numPuja[0] || numPrincipal[1] == numPuja[2] || numPrincipal[1] == numPuja[3])
-//         picas++;
-//     if(numPrincipal[2] == numPuja[0] || numPrincipal[2] == numPuja[1] || numPrincipal[2] == numPuja[3])
-//         picas++;
-//     if(numPrincipal[3] == numPuja[0] || numPrincipal[3] == numPuja[1] || numPrincipal[3] == numPuja[2])
-//         picas++;
-
-//  }
 
 
 // if(ganaJugador){
@@ -158,7 +138,7 @@ function pujar(numPuja){
 
 //Funcion que oculta el campo con el valor a adivinar
 function mostrarResultado(){
-    document.getElementById('NumOculto').style.color = 'red';
+    document.getElementById('NumOculto').style.color = 'transparent';
 }
 
 
