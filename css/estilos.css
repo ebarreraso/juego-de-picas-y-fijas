@@ -1,0 +1,27 @@
+body{
+	font-family: 'Times New Roman', Times, serif;
+}
+
+
+#NumOculto{
+	border: solid 5px #FF5733;
+	width: 200px;
+	height: 35px;
+	display: inline-flex;
+	justify-content: center;
+	text-align: center;
+	background-color: #2A2828;
+}
+
+.textoPrincipal{
+	font-weight: 900;
+	font-family: cursive;
+}
+
+.texto-puja{
+	font-weight: 900;
+}
+
+.btn-guardar{
+	height: 43px;
+}

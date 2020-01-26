@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/estilos.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	
+</head>
+<body>
+	<!-- <div class="container">
+		<form class="pt-3" id="correos">
+			<input type="text" id="enviar"/>
+			<button class="" type="submit" id="guardar">Enviar</button>
+		</form>
+	</div> -->
+	<script>
+		// var formulario = document.querySelector("#correos");
+		// 	formulario.addEventListener('submit', function(){
+		// 	var titulo = document.querySelector('#enviar').value;
+		// 		localStorage.setItem(titulo, titulo);
+		// 		document.write('<h1>'+titulo+'</h1>');
+		// });
+
+		// var comidas = [
+		//     { principal : 'arroz', secundario : 'frijol', jugo : 'lulo' },
+		//     { principal : 'pasta', secundario : 'albondigas', jugo : 'mora' },
+		//     { principal : 'sopa', secundario : 'banano', jugo : 'maracuya' },
+		//     { principal : 'alverjas', secundario : 'pure de papa', jugo : 'durasno' }
+		// ];
+
+		// var almuerzos = [];
+
+		// for(i = 0; i < comidas.length; i++){
+		//     almuerzos.push(comidas[i].principal);
+		// }
+		// console.log(almuerzos);
+
+		// var menuDia = comidas.map(function(comida){
+		// 	return comida.secundario;
+		// })
+		// console.log(menuDia);
+		
+
+
+		// let numeros = [];
+
+		// function comparar(a,b ){
+		// 	return a - b 
+		// }
+
+
+		// for(i = 0; i < 3; i++){
+		// 	numeros[i] = prompt('Ingrese 3 numeros aleatorios :  '+0);
+		// 	var totalNumeros = numeros;
+
+		// 	totalNumeros = numeros.sort(comparar);
+		// 	console.log(totalNumeros);
+		// 	document.write('<h1>'+totalNumeros+'</h1>'+'<br>');
+		// }
+
+
+
+		let numeros = [];
+
+		function comparar(a,b ){
+			return a - b 
+		}
+
+
+		alert('Ingrese 10 numeros alaetorios');
+		for(i = 0; i < 10; i++){
+			numeros[i] = prompt('Ingrese el numero '+(i+1)+' :  ');
+		}
+
+		var totalNumeros = numeros.sort(comparar);
+		console.log(totalNumeros);
+		document.write('<h1>'+totalNumeros+'</h1>'+'<br>');
+
+		
+		
+</script>
+		
+
+
+	</script>
+	
+	<script type="text/javascritp" src="js/logica.js"></script>
+	<script type="text/javascritp" src="js/bootstrap.js" ></script>
+</body>
+</html>

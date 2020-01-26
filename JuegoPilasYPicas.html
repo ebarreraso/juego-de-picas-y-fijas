@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/estilos.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+    <title>Picas Y Fijas</title>
+</head>
+<body onload="mostrarResultado()">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <span for="" class="textoPrincipal">Dijito Oculto</span>                
+            </div>
+            <div class="col-12">
+                <div id="NumOculto"></div>
+            </div>
+            <div class="col-12 mb-3">
+                <div class="d-flex pt-3 justify-content-between">
+                  <label for="" class="col-3 texto-puja">Ingrese número a adivinar: </label>
+                  <input type="password" maxlength="4" class="form-control form-control-sm col-3" name="campoNum" id="campoNumAdv" aria-describedby="helpId" placeholder="Ingrese 4 digitos">
+                  <button type="button" class="btn-guardar btn btn-outline-danger col-3" id="guardar" onclick="numAdv()">guardar</button>
+                </div>
+            </div>
+            <div class="col-12 mb-3">
+                <div class="d-flex pt-3 justify-content-between">
+                  <label for="" class="col-3 texto-puja">Ingrese su Puja: </label>
+                  <input type="number" maxlength="4" class="form-control form-control-sm col-3" name="campoNum" id="campoNum" onKeyUp="return limitar(event,this.value,4)" onKeyDown="return limitar(event,this.value,4)" placeholder="Ingrese 4 digitos">
+                  <button type="button" class="btn btn-outline-danger col-3" id="puja" onclick="pujar()">Pujar</button>
+                </div>
+            </div>
+            <div class="col-12">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>Número Intento</th>
+                            <th>Número Ingresado</th>
+                            <th>Número Correcto</th>
+                        </tr>
+                    </thead>
+                    <tbody class="cuerpoTabla">
+                        <tr>
+                            <th id="indiceIntento"></th>
+                            <th id="numeroIngr"></th>
+                            <th id="valorAprox"></th>          
+                        </tr>
+                    </tbody>    
+                </table>
+            </div>
+        </div>
+    </div>
+<script src="js/logica.js"></script>    
+</body>
+</html>
