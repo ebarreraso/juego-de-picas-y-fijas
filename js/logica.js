@@ -59,12 +59,12 @@ function limitar(e, contenido, caracteres)
 
 //Pinta el número oculto
 function numAdv(){
-    numPrincipal = parseInt(document.getElementById('campoNumAdv').value);
+    numPrincipal = document.getElementById('campoNumAdv').value;
     document.getElementById('NumOculto').innerHTML = numPrincipal;
 
-    if(document.getElementById('campoNumAdv').onclick = true){
+    if(document.getElementById('campoNumAdv').onclick){
         document.getElementById('campoNumAdv').value  = '';
-        document.getElementById('guardar').disabled  == true;
+        document.getElementById('guardar').disabled  = true;
         document.getElementById('campoNumAdv').disabled  = true;
     }
     numeroAdd = numPrincipal.toString();
@@ -72,12 +72,13 @@ function numAdv(){
 }
 
 function pujar(numPuja){
-    numPuja = parseInt(document.getElementById('campoNum').value);
-    if(document.getElementById('campoNum').onclick = true){
-        
-        if(numeroAdd != '' || numeroAdd != NaN || numeroAdd != null){
-            intentoNum = numPuja.toString();
-
+    numPuja = document.getElementById('campoNum').value;
+    intentoNum = numPuja.toString();
+    console.log(intentoNum);
+    if(document.getElementById('puja').onclick){
+        document.getElementById('valorAprox').reset();
+        if(numeroAdd !='' && numeroAdd != null && intentoNum !='' &&  intentoNum != null){
+            
             //Determina si hay fijas
             if(numeroAdd[0] == intentoNum[0])
                 fijas++;
@@ -98,29 +99,35 @@ function pujar(numPuja){
             if(numeroAdd[3] == intentoNum[0] || numeroAdd[3] == intentoNum[1] || numeroAdd[3] == intentoNum[2])
             picas++;
 
-
             //Imprime en la tabla 
             if(document.getElementById('indiceIntento').innerHTML)
-                document.getElementById('indiceIntento').innerHTML = parseInt(document.getElementById('indiceIntento').innerHTML)  + 1;
+            document.getElementById('indiceIntento').innerHTML = parseInt(document.getElementById('indiceIntento').innerHTML)  + 1;
             else
-                document.getElementById('indiceIntento').innerHTML = 1;
+            document.getElementById('indiceIntento').innerHTML = 1;
 
-            if(numeroAdd != '' && intentoNum  == numeroAdd){
-                ganaJugador = true;
-                alert('En hora buena has ganado');
-                document.getElementById('puja').disabled  = true;
-            }else if(parseInt(document.getElementById('indiceIntento').innerHTML) == 10){
-                document.getElementById('puja').disabled  = true;
-                alert('has fallado, agotaste todos tus intentos');
-            }
 
             document.getElementById('numeroIngr').innerHTML = numPuja;
             document.getElementById('valorAprox').innerHTML = ('tienes: '+fijas+' fijas y: '+picas+' picas');
 
-        }else {
+        }else if(numeroAdd ==='' || numeroAdd === null || intentoNum === '' ||  intentoNum === null) {
             alert('no existe un numero para adivinar');
             alert('ingrese un numero a adivinar adivinar');
             document.getElementById('campoNum').value = '';
+            document.getElementById('numeroIngr').innerHTML = numPuja;
+            document.getElementById('valorAprox').innerHTML = ('');
+            //Imprime en la tabla 
+            if(document.getElementById('indiceIntento').innerHTML)
+            document.getElementById('indiceIntento').innerHTML = parseInt(document.getElementById('indiceIntento').innerHTML);
+
+        }
+
+        if(intentoNum  == numeroAdd && intentoNum != '' && numeroAdd !=''){
+            ganaJugador = true;
+            alert('En hora buena has ganado');
+            document.getElementById('puja').disabled  = true;
+        }else if(document.getElementById('indiceIntento').innerHTML === 10){
+            document.getElementById('puja').disabled  = true;
+            alert('has fallado, agotaste todos tus intentos');
         }
 
         console.log(fijas);
