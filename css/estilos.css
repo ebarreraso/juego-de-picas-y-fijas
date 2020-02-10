@@ -20,8 +20,54 @@ body{
 
 .texto-puja{
 	font-weight: 900;
+	font-size: 30px;
+	text-shadow: aqua;
 }
 
 .btn-guardar{
 	height: 43px;
+}
+
+
+.caja-superior{
+	border: 5px solid #d60047;
+	-webkit-box-shadow: 0px 2px 6px 5px rgba(0,0,0,0.62);
+	-moz-box-shadow: 0px 2px 6px 5px rgba(0,0,0,0.62);
+	box-shadow: 0px 2px 6px 5px rgba(0,0,0,0.62);
+	margin: 10px 10px;
+	background: #d60047;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 999;
+	position: relative;
+	top: 130px;
+}
+
+.caja-superior:hover{
+	top: -100px;
+}
+
+
+
+.caja-inferior{
+	border: 5px solid #4a4044;
+	-webkit-box-shadow: 0px 2px 6px 5px rgba(0,0,0,0.62);
+	-moz-box-shadow: 0px 2px 6px 5px rgba(0,0,0,0.62);
+	box-shadow: 0px 2px 6px 5px rgba(0,0,0,0.62);
+	margin: 10px 10px;
+	background: #4a4044;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	position: relative;
+	bottom: 90px;
+}
+
+.caja-inferior:hover{
+	bottom: -90px;
+
 }
